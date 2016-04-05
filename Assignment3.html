@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>Assignment 1</title>
+	
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!--Angular-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+	
+	<script type="text/javascript">
+	var myMod = angular.module("myApp",["ngRoute"])
+	
+	myMod.config(function ($routeProvider){
+		$routeProvider
+			.when("/page1",{
+				templateUrl:"template/page1.html",
+				controller:"page1Ctrl"
+			})
+						
+			.when("/page2",{
+				templateUrl:"template/page2.html",
+				controller:"page2Ctrl"
+			})	
+			.when("/page3",{
+				templateUrl:"template/page3.html",
+				controller:"page4Ctrl"
+			})		
+			.when("/page4",{
+				templateUrl:"template/page4.html",
+				controller:"page4Ctrl"
+			})						
+			.otherwise({
+				redirectTo:"/",
+				templateUrl:"template/index.html",
+				controller:"indexCtrl"
+			})
+		
+		
+	})
+	myMod.controller("page1Ctrl",function($scope){
+							$scope.message="Welcome to page 1";
+						})
+	myMod.controller("page2Ctrl",function($scope){
+							$scope.message="Welcome to page 2";
+						})
+	myMod.controller("page3Ctrl",function($scope){
+							$scope.message="Welcome to page 3";
+						})
+	myMod.controller("page4Ctrl",function($scope){
+							$scope.message="Welcome to page 4";
+						})
+	myMod.controller("indexCtrl",function($scope){
+							$scope.message="Welcome to Default home page!";
+						})
+						
+
+	</script>
+</head>
+<body>
+	<div ng-app='myApp'>
+		<h3>This is a Default route example</h3>
+		<ul class="nav navbar-nav">
+			<li><a href="#/page1">Page 1</a></li>
+			<li><a href="#/page2">Page 2</a></li>
+			<li><a href="#/page3">Page 3</a></li>
+			<li><a href="#/page4">Page 4</a></li>
+		</ul>
+		<br><br>
+		<hr>
+		<br><br>
+		<div>
+			<ng-view></ng-view>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>
